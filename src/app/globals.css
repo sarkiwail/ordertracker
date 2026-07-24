@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/* Only static values in @theme - dynamic colors go in :root below */
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* ============ LIGHT THEME ============ */
+:root {
+  --accent-hue: 220;
+  --accent-saturation: 70%;
+
+  --color-bg: hsl(220 14% 96%);
+  --color-sfc: hsl(0 0% 100%);
+  --color-sfc-hover: hsl(220 14% 96%);
+  --color-sfc-secondary: hsl(220 14% 94%);
+  --color-bd: hsl(220 13% 91%);
+  --color-bd-light: hsl(220 13% 91% / 0.5);
+  --color-txt-primary: hsl(220 20% 14%);
+  --color-txt-secondary: hsl(220 10% 46%);
+  --color-txt-tertiary: hsl(220 8% 56%);
+  --color-txt-muted: hsl(220 8% 70%);
+
+  --color-acc: hsl(var(--accent-hue) var(--accent-saturation) 50%);
+  --color-acc-hover: hsl(var(--accent-hue) var(--accent-saturation) 45%);
+  --color-acc-light: hsl(var(--accent-hue) var(--accent-saturation) 96%);
+  --color-acc-fg: hsl(0 0% 100%);
+
+  --color-st-new: hsl(var(--accent-hue) var(--accent-saturation) 50%);
+  --color-st-proc: hsl(35 92% 55%);
+  --color-st-rdy: hsl(142 71% 45%);
+  --color-st-del: hsl(142 60% 40%);
+  --color-st-canc: hsl(0 70% 55%);
+  --color-st-hold: hsl(200 60% 50%);
+
+  --color-st-new-bg: hsl(var(--accent-hue) var(--accent-saturation) 96%);
+  --color-st-proc-bg: hsl(35 92% 94%);
+  --color-st-rdy-bg: hsl(142 71% 94%);
+  --color-st-del-bg: hsl(142 60% 94%);
+  --color-st-canc-bg: hsl(0 70% 94%);
+  --color-st-hold-bg: hsl(200 60% 94%);
+
+  --color-wa: hsl(142 70% 45%);
+  --color-wa-bg: hsl(142 70% 95%);
+  --color-ig: hsl(260 60% 55%);
+  --color-ig-bg: hsl(260 60% 95%);
+  --color-web: hsl(var(--accent-hue) var(--accent-saturation) 50%);
+  --color-web-bg: hsl(var(--accent-hue) var(--accent-saturation) 95%);
+}
+
+/* ============ DARK THEME ============ */
+.dark {
+  --color-bg: hsl(220 20% 8%);
+  --color-sfc: hsl(220 18% 13%);
+  --color-sfc-hover: hsl(220 18% 18%);
+  --color-sfc-secondary: hsl(220 18% 16%);
+  --color-bd: hsl(220 15% 22%);
+  --color-bd-light: hsl(220 15% 22% / 0.5);
+  --color-txt-primary: hsl(220 15% 90%);
+  --color-txt-secondary: hsl(220 10% 65%);
+  --color-txt-tertiary: hsl(220 10% 55%);
+  --color-txt-muted: hsl(220 10% 45%);
+
+  --color-acc: hsl(var(--accent-hue) var(--accent-saturation) 60%);
+  --color-acc-hover: hsl(var(--accent-hue) var(--accent-saturation) 55%);
+  --color-acc-light: hsl(var(--accent-hue) var(--accent-saturation) 20%);
+  --color-acc-fg: hsl(0 0% 100%);
+
+  --color-st-new: hsl(var(--accent-hue) var(--accent-saturation) 65%);
+  --color-st-proc: hsl(35 85% 55%);
+  --color-st-rdy: hsl(142 65% 50%);
+  --color-st-del: hsl(142 55% 45%);
+  --color-st-canc: hsl(0 65% 55%);
+  --color-st-hold: hsl(200 55% 50%);
+
+  --color-st-new-bg: hsl(var(--accent-hue) var(--accent-saturation) 15%);
+  --color-st-proc-bg: hsl(35 50% 15%);
+  --color-st-rdy-bg: hsl(142 50% 15%);
+  --color-st-del-bg: hsl(142 40% 12%);
+  --color-st-canc-bg: hsl(0 50% 15%);
+  --color-st-hold-bg: hsl(200 40% 15%);
+
+  --color-wa: hsl(142 60% 50%);
+  --color-wa-bg: hsl(142 50% 15%);
+  --color-ig: hsl(260 50% 60%);
+  --color-ig-bg: hsl(260 40% 15%);
+  --color-web: hsl(var(--accent-hue) var(--accent-saturation) 60%);
+  --color-web-bg: hsl(var(--accent-hue) var(--accent-saturation) 15%);
+}
+
+/* Map short names to Tailwind-style names for the utility classes */
+:root, .dark {
+  --color-background: var(--color-bg);
+  --color-surface: var(--color-sfc);
+  --color-surface-hover: var(--color-sfc-hover);
+  --color-surface-secondary: var(--color-sfc-secondary);
+  --color-border: var(--color-bd);
+  --color-border-light: var(--color-bd-light);
+  --color-text-primary: var(--color-txt-primary);
+  --color-text-secondary: var(--color-txt-secondary);
+  --color-text-tertiary: var(--color-txt-tertiary);
+  --color-text-muted: var(--color-txt-muted);
+
+  --color-accent: var(--color-acc);
+  --color-accent-hover: var(--color-acc-hover);
+  --color-accent-light: var(--color-acc-light);
+  --color-accent-foreground: var(--color-acc-fg);
+
+  --color-status-new: var(--color-st-new);
+  --color-status-processing: var(--color-st-proc);
+  --color-status-ready: var(--color-st-rdy);
+  --color-status-delivered: var(--color-st-del);
+  --color-status-cancelled: var(--color-st-canc);
+  --color-status-hold: var(--color-st-hold);
+
+  --color-status-new-bg: var(--color-st-new-bg);
+  --color-status-processing-bg: var(--color-st-proc-bg);
+  --color-status-ready-bg: var(--color-st-rdy-bg);
+  --color-status-delivered-bg: var(--color-st-del-bg);
+  --color-status-cancelled-bg: var(--color-st-canc-bg);
+  --color-status-hold-bg: var(--color-st-hold-bg);
+
+  --color-whatsapp: var(--color-wa);
+  --color-whatsapp-bg: var(--color-wa-bg);
+  --color-instagram: var(--color-ig);
+  --color-instagram-bg: var(--color-ig-bg);
+  --color-website: var(--color-web);
+  --color-website-bg: var(--color-web-bg);
+}
+
+@layer base {
+  *, *::before, *::after {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(220 10% 80%); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(220 10% 70%); }
+
+  .dark ::-webkit-scrollbar-thumb { background: hsl(220 10% 30%); }
+  .dark ::-webkit-scrollbar-thumb:hover { background: hsl(220 10% 40%); }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.3s ease-out, slideUp 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(4px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  .reduce-motion * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
