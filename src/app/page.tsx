@@ -7,15 +7,14 @@ import { StatCard } from "@/components/ui/stat-card";
 import { StatusBadge, PlatformBadge } from "@/components/ui/badge";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { OrderCard } from "@/components/orders/order-card";
+import { ClientTime } from "@/components/ui/client-time";
 import { dashboardStats, mockOrders, recentActivity } from "@/data/mock-orders";
 import { formatCurrency, cn } from "@/lib/utils";
 import type { Order } from "@/types";
 import {
   ShoppingBag,
-  Clock,
   CookingPot,
   CheckCircle2,
-  TrendingUp,
   DollarSign,
   MessageCircle,
   Instagram,
@@ -38,7 +37,6 @@ export default function DashboardPage() {
       <div className="flex-1 lg:pl-64">
         <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
 
-        {/* Mobile sidebar overlay */}
         {sidebarOpen && (
           <div
             className="fixed inset-0 bg-black/20 z-40 lg:hidden"
@@ -47,7 +45,6 @@ export default function DashboardPage() {
         )}
 
         <main className="p-4 sm:p-6 lg:p-8 space-y-6 animate-in">
-          {/* Page Title */}
           <div>
             <h1 className="text-lg font-semibold text-text-primary">Dashboard</h1>
             <p className="text-sm text-text-muted mt-0.5">
@@ -55,7 +52,6 @@ export default function DashboardPage() {
             </p>
           </div>
 
-          {/* Stats Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <StatCard
               title="Pending Orders"
@@ -83,9 +79,7 @@ export default function DashboardPage() {
             />
           </div>
 
-          {/* Main Grid: Active Orders + Recent Activity */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Active Orders */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-sm font-semibold text-text-primary">
@@ -107,9 +101,7 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {/* Right Column: Activity + Platform Stats */}
             <div className="space-y-6">
-              {/* Recent Activity */}
               <Card>
                 <CardHeader>
                   <h3 className="text-sm font-semibold text-text-primary">
@@ -129,7 +121,7 @@ export default function DashboardPage() {
                             {activity.message}
                           </p>
                           <p className="text-[11px] text-text-muted mt-0.5">
-                            {timeAgo(activity.timestamp)}
+                            <ClientTime date={activity.timestamp} format="relative" />
                           </p>
                         </div>
                       </div>
@@ -138,7 +130,6 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
 
-              {/* Platform Distribution */}
               <Card>
                 <CardHeader>
                   <h3 className="text-sm font-semibold text-text-primary">
@@ -184,9 +175,7 @@ export default function DashboardPage() {
                     <div key={item.platform} className="space-y-1.5">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <div
-                            className={cn("p-1.5 rounded-md", item.bg)}
-                          >
+                          <div className={cn("p-1.5 rounded-md", item.bg)}>
                             <item.icon className={cn("w-3.5 h-3.5", item.color)} />
                           </div>
                           <span className="text-xs font-medium text-text-secondary">
@@ -199,10 +188,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="w-full h-1.5 bg-surface-secondary rounded-full overflow-hidden">
                         <div
-                          className={cn(
-                            "h-full rounded-full transition-all",
-                            item.color.replace("text-", "bg-")
-                          )}
+                          className={cn("h-full rounded-full transition-all", item.color.replace("text-", "bg-"))}
                           style={{ width: `${item.percent}%` }}
                         />
                       </div>
@@ -213,13 +199,10 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Recent Orders Table */}
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-text-primary">
-                  Recent Orders
-                </h3>
+                <h3 className="text-sm font-semibold text-text-primary">Recent Orders</h3>
                 <button className="text-xs font-medium text-accent hover:text-accent-hover transition-colors">
                   View all
                 </button>
@@ -230,21 +213,11 @@ export default function DashboardPage() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-border/50">
-                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">
-                        Order
-                      </th>
-                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">
-                        Customer
-                      </th>
-                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3 hidden sm:table-cell">
-                        Platform
-                      </th>
-                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">
-                        Status
-                      </th>
-                      <th className="text-right text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">
-                        Total
-                      </th>
+                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">Order</th>
+                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">Customer</th>
+                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3 hidden sm:table-cell">Platform</th>
+                      <th className="text-left text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">Status</th>
+                      <th className="text-right text-xs font-medium text-text-muted uppercase tracking-wider px-5 py-3">Total</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border/50">
@@ -255,19 +228,10 @@ export default function DashboardPage() {
                         onClick={() => setSelectedOrder(order)}
                       >
                         <td className="px-5 py-3.5">
-                          <span className="text-xs font-medium text-text-primary">
-                            {order.orderNumber}
-                          </span>
+                          <span className="text-xs font-medium text-text-primary">{order.orderNumber}</span>
                         </td>
                         <td className="px-5 py-3.5">
-                          <div>
-                            <span className="text-xs text-text-primary">
-                              {order.customer.name}
-                            </span>
-                            <span className="text-xs text-text-muted block sm:hidden">
-                              {order.customer.phone}
-                            </span>
-                          </div>
+                          <span className="text-xs text-text-primary">{order.customer.name}</span>
                         </td>
                         <td className="px-5 py-3.5 hidden sm:table-cell">
                           <PlatformBadge platform={order.platform} />
@@ -276,9 +240,7 @@ export default function DashboardPage() {
                           <StatusBadge status={order.status} />
                         </td>
                         <td className="px-5 py-3.5 text-right">
-                          <span className="text-xs font-semibold text-text-primary">
-                            {formatCurrency(order.total)}
-                          </span>
+                          <span className="text-xs font-semibold text-text-primary">{formatCurrency(order.total)}</span>
                         </td>
                       </tr>
                     ))}
@@ -291,16 +253,4 @@ export default function DashboardPage() {
       </div>
     </div>
   );
-}
-
-// Helper function for time ago
-function timeAgo(date: Date): string {
-  const now = Date.now();
-  const diffMs = now - date.getTime();
-  const mins = Math.floor(diffMs / 60000);
-  if (mins < 1) return "Just now";
-  if (mins < 60) return `${mins}m ago`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
-  return `${Math.floor(hours / 24)}d ago`;
 }

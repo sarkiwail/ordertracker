@@ -11,11 +11,12 @@ interface StatCardProps {
   icon: LucideIcon;
   trend?: { value: number; positive: boolean };
   className?: string;
+  accent?: boolean;
 }
 
-export function StatCard({ title, value, icon: Icon, trend, className }: StatCardProps) {
+export function StatCard({ title, value, icon: Icon, trend, className, accent }: StatCardProps) {
   return (
-    <Card className={cn("p-4 sm:p-5", className)}>
+    <Card className={cn("p-4 sm:p-5 group", className)} hover>
       <div className="flex items-start justify-between">
         <div className="space-y-1.5">
           <p className="text-xs font-medium text-text-tertiary uppercase tracking-wider">
@@ -41,8 +42,11 @@ export function StatCard({ title, value, icon: Icon, trend, className }: StatCar
             </p>
           )}
         </div>
-        <div className="p-2.5 rounded-lg bg-accent-light">
-          <Icon className="w-4 h-4 text-accent" />
+        <div className={cn(
+          "p-2.5 rounded-lg transition-colors",
+          accent ? "bg-accent text-accent-foreground" : "bg-accent-light text-accent"
+        )}>
+          <Icon className="w-4 h-4" />
         </div>
       </div>
     </Card>
