@@ -9,9 +9,11 @@ interface ClientTimeProps {
 }
 
 export function ClientTime({ date, format = "relative", className }: ClientTimeProps) {
+  const [mounted, setMounted] = useState(false);
   const [display, setDisplay] = useState<string>("");
 
   useEffect(() => {
+    setMounted(true);
     const d = typeof date === "string" ? new Date(date) : date;
     const now = Date.now();
     const diffMs = now - d.getTime();
@@ -52,15 +54,17 @@ export function ClientTime({ date, format = "relative", className }: ClientTimeP
     }
   }, [date, format]);
 
-  if (!display) return <span className={className}>--</span>;
+  if (!mounted) return <span className={className}>--</span>;
 
   return <span className={className}>{display}</span>;
 }
 
 export function ClientDate({ className }: { className?: string }) {
+  const [mounted, setMounted] = useState(false);
   const [display, setDisplay] = useState("");
 
   useEffect(() => {
+    setMounted(true);
     setDisplay(
       new Intl.DateTimeFormat("en-US", {
         weekday: "short",
@@ -70,6 +74,6 @@ export function ClientDate({ className }: { className?: string }) {
     );
   }, []);
 
-  if (!display) return <span className={className} />;
+  if (!mounted) return <span className={className} />;
   return <span className={className}>{display}</span>;
 }

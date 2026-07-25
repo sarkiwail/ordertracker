@@ -284,9 +284,6 @@
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
   }
-  .block {
-    display: block;
-  }
   .flex {
     display: flex;
   }
@@ -949,9 +946,6 @@
     }
     .sm\:flex {
       display: flex;
-    }
-    .sm\:hidden {
-      display: none;
     }
     .sm\:table-cell {
       display: table-cell;
