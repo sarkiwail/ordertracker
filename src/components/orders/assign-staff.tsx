@@ -52,8 +52,8 @@ export function AssignStaff({ order, onAssign, onClose }: AssignStaffProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/20 z-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-lg max-h-[80vh] overflow-hidden animate-in">
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <Card className="w-full max-w-lg max-h-[80vh] overflow-hidden animate-in bg-surface shadow-xl border-border/70">
         <div className="flex items-center justify-between px-5 py-4 border-b border-border/50">
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 rounded-md bg-accent-light">
